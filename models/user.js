@@ -43,8 +43,8 @@ const loginUserSchema = joi.object({
 });
 
 const changePasswordSchema = joi.object({
-  password: joi.string().min(6).max(15).required(),
-  confirmPassword: joi.string().min(6).max(15).required(),
+  newPassword: joi.string().min(6).max(15).required(),
+  confirmNewPassword: joi.string().min(6).max(15).required(),
 });
 
 const requestForChangingPassword = joi.object({
