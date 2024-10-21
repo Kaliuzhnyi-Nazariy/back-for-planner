@@ -106,27 +106,6 @@ const deleteAcc = async (req, res, next) => {
   res.json({ message: "Deleted successfully!" });
 };
 
-// const forgotPassword = async (req, res, next) => {
-//   const { email } = req.body;
-
-//   const isUser = await User.findOne({ email });
-
-//   if (!isUser) {
-//     next(404);
-//   }
-
-//   const renewPasswordToken = uuidv4();
-
-//   await User.findOneAndUpdate({ email }, { renewPasswordToken });
-//   try {
-//     res.json({
-//       link: `${BASE_URL}/api/users/renewpassword/${renewPasswordToken}`,
-//     });
-//   } catch (error) {
-//     next(error);
-//   }
-// };
-
 const forgotPassword = async (req, res, next) => {
   const { emailOrUsername } = req.body;
 
