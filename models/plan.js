@@ -1,5 +1,6 @@
 const { Schema, model } = require("mongoose");
 const joi = require("joi");
+const { handleMongoose } = require("../helpers");
 
 const planSchema = new Schema(
   {
@@ -28,7 +29,7 @@ const planSchema = new Schema(
   { versionKey: false, timestamps: true }
 );
 
-planSchema.post("save", (error) => console.log(error));
+planSchema.post("save", handleMongoose);
 
 const Plan = model("plan", planSchema);
 

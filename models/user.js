@@ -1,5 +1,6 @@
 const { Schema, model } = require("mongoose");
 const joi = require("joi");
+const { handleMongoose } = require("../helpers");
 
 const userSchema = new Schema(
   {
@@ -64,7 +65,7 @@ const schemas = {
   updateUserSchema,
 };
 
-userSchema.post("save", (error) => console.log(error));
+userSchema.post("save", handleMongoose);
 
 const User = model("user", userSchema);
 
