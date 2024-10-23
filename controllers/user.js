@@ -130,7 +130,8 @@ const forgotPassword = async (req, res, next) => {
   await User.findOneAndUpdate({ email: isUser.email }, { renewPasswordToken });
   try {
     res.json({
-      link: `${BASE_URL}/api/users/renewpassword/${renewPasswordToken}`,
+      // link: `${BASE_URL}/api/users/renewpassword/${renewPasswordToken}`,
+      link: `${renewPasswordToken}`,
     });
   } catch (error) {
     next(error);
