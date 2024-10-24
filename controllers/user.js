@@ -143,9 +143,10 @@ const renewPassword = async (req, res, next) => {
 
   const user = await User.findOne({ renewPasswordToken });
 
+  if (!user) next(HttpError(404, "User not found!"));
+
   if (user.renewPasswordToken === "")
     next(HttpError(400, "No request for changing"));
-  if (!user) next(HttpError(404, "User not found!"));
 
   const { newPassword, confirmNewPassword } = req.body;
 
