@@ -29,7 +29,13 @@ const register = async (req, res) => {
     password: hashPassword,
   });
 
-  res.status(201).json({ email: newUser.email, username: newUser.username });
+  res
+    .status(201)
+    .json({
+      id: newUser._id,
+      email: newUser.email,
+      username: newUser.username,
+    });
 };
 
 const login = async (req, res) => {
