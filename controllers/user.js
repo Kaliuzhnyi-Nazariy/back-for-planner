@@ -29,13 +29,11 @@ const register = async (req, res) => {
     password: hashPassword,
   });
 
-  res
-    .status(201)
-    .json({
-      id: newUser._id,
-      email: newUser.email,
-      username: newUser.username,
-    });
+  res.status(201).json({
+    id: newUser._id,
+    email: newUser.email,
+    username: newUser.username,
+  });
 };
 
 const login = async (req, res) => {
@@ -61,7 +59,7 @@ const login = async (req, res) => {
 
   await User.findByIdAndUpdate(user._id, { token });
 
-  res.json({ username: user.username, token });
+  res.json({ username: user.username, email, token });
 };
 
 const updateUser = async (req, res, next) => {
