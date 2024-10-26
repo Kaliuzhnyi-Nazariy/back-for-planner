@@ -168,6 +168,13 @@ const renewPassword = async (req, res, next) => {
   res.json({ message: "password successfully changed" });
 };
 
+const getCurrentUser = async (req, res, next) => {
+  const { username, email } = req.user;
+
+  if (!username || !email) next(HttpError(400));
+  res.json({ username, email });
+};
+
 module.exports = {
   register: ctrlWrapper(register),
   login: ctrlWrapper(login),
@@ -176,4 +183,5 @@ module.exports = {
   deleteAcc: ctrlWrapper(deleteAcc),
   forgotPassword: ctrlWrapper(forgotPassword),
   renewPassword: ctrlWrapper(renewPassword),
+  getCurrentUser: ctrlWrapper(getCurrentUser),
 };

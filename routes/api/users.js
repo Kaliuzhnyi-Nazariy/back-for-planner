@@ -32,4 +32,6 @@ router.post("/:userId", authenticate, ctrl.logout);
 
 router.delete("/", authenticate, ctrl.deleteAcc);
 
+router.get("/current", authenticate, ctrl.getCurrentUser);
+
 module.exports = router;
