@@ -83,11 +83,11 @@ const deleteTask = async (req, res, next) => {
   const { taskId } = req.params;
   const { id: owner } = req.user;
 
-  const delitingTask = await Plan.findOneAndDelete({ _id: taskId, owner });
+  const deletingTask = await Plan.findOneAndDelete({ _id: taskId, owner });
 
-  if (!delitingTask) next(HttpError(404));
+  if (!deletingTask) next(HttpError(404));
 
-  res.json({ message: "Task deleted successfully!" });
+  res.json({ deletingTask });
 };
 
 module.exports = {
