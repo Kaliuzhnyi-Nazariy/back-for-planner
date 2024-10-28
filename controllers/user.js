@@ -169,10 +169,10 @@ const renewPassword = async (req, res, next) => {
 };
 
 const getCurrentUser = async (req, res, next) => {
-  const { username, email } = req.user;
+  const { username, email, _id } = req.user;
 
-  if (!username || !email) next(HttpError(400));
-  res.json({ username, email });
+  if (!username || !email || !_id) next(HttpError(400));
+  res.json({ username, email, _id });
 };
 
 module.exports = {
