@@ -36,7 +36,6 @@ const Plan = model("plan", planSchema);
 const addPlan = joi.object({
   title: joi.string().max(64).required(),
   taskText: joi.string().max(256).required(),
-  owner: joi.string().required(),
   date: joi.date(),
   x: joi.number(),
   y: joi.number(),
