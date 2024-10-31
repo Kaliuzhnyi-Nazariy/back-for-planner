@@ -67,8 +67,6 @@ const updateUser = async (req, res, next) => {
   const { email, username } = req.body;
   const oldUserInfo = req.user;
 
-  console.log(oldUserInfo);
-
   if (oldUserInfo.email !== email || oldUserInfo.username !== username) {
     next(HttpError(401));
   }

@@ -18,7 +18,7 @@ const planSchema = new Schema(
       ref: "user",
     },
     date: {
-      type: Date,
+      type: String,
       default: Date.now(),
     },
     coordinates: {
@@ -36,7 +36,7 @@ const Plan = model("plan", planSchema);
 const addPlan = joi.object({
   title: joi.string().max(64).required(),
   taskText: joi.string().max(256).required(),
-  date: joi.date(),
+  date: joi.string(),
   x: joi.number(),
   y: joi.number(),
 });
@@ -44,14 +44,19 @@ const addPlan = joi.object({
 const updatePlan = joi.object({
   title: joi.string().max(64).required(),
   taskText: joi.string().max(256).required(),
-  date: joi.date(),
+  date: joi.string(),
   x: joi.number(),
   y: joi.number(),
+});
+
+const fetchPlanByDate = joi.object({
+  date: joi.string().required(),
 });
 
 const schemas = {
   addPlan,
   updatePlan,
+  fetchPlanByDate,
 };
 
 module.exports = { Plan, schemas };

@@ -23,6 +23,16 @@ const getTaskById = async (req, res, next) => {
   res.json(task);
 };
 
+const getTaskByDate = async (req, res, next) => {
+  const { _id: owner } = req.user;
+
+  const task = await Plan.find({ owner, date: req.body.date });
+
+  if (!task) next(HttpError(404));
+
+  res.json(task);
+};
+
 const addTask = async (req, res, next) => {
   const { title, taskText, date, x, y } = req.body;
   const { id } = req.user;
@@ -93,6 +103,7 @@ const deleteTask = async (req, res, next) => {
 module.exports = {
   getAll: ctrlWrapper(getAll),
   getTaskById: ctrlWrapper(getTaskById),
+  getTaskByDate: ctrlWrapper(getTaskByDate),
   addTask: ctrlWrapper(addTask),
   updateTask: ctrlWrapper(updateTask),
   deleteTask: ctrlWrapper(deleteTask),
