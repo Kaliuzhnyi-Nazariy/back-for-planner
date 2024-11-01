@@ -24,9 +24,10 @@ const getTaskById = async (req, res, next) => {
 };
 
 const getTaskByDate = async (req, res, next) => {
-  const { _id: owner } = req.user;
+  const { id: owner } = req.user;
+  const { date } = req.body;
 
-  const task = await Plan.find({ owner, date: req.body.date });
+  const task = await Plan.find({ owner, date });
 
   if (!task) next(HttpError(404));
 
