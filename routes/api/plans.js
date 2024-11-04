@@ -9,9 +9,9 @@ const router = express.Router();
 router.get("/", authanticate, ctrl.getAll);
 
 router.get(
-  "/byDate",
+  "/byDate/:date",
   authanticate,
-  validateBody(schemas.fetchPlanByDate),
+  // validateBody(schemas.fetchPlanByDate),
   ctrl.getTaskByDate
 );
 

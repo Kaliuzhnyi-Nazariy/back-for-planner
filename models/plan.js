@@ -19,7 +19,7 @@ const planSchema = new Schema(
     },
     date: {
       type: String,
-      default: Date.now(),
+      // default: Date.now(),
     },
     coordinates: {
       x: Number,
@@ -49,14 +49,14 @@ const updatePlan = joi.object({
   y: joi.number(),
 });
 
-const fetchPlanByDate = joi.object({
-  date: joi.string().required(),
-});
+// const fetchPlanByDate = joi.object({
+//   date: joi.string().required(),
+// });
 
 const schemas = {
   addPlan,
   updatePlan,
-  fetchPlanByDate,
+  // fetchPlanByDate,
 };
 
 module.exports = { Plan, schemas };

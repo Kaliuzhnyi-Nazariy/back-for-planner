@@ -23,9 +23,20 @@ const getTaskById = async (req, res, next) => {
   res.json(task);
 };
 
+// const getTaskByDate = async (req, res, next) => {
+//   const { id: owner } = req.user;
+//   const { date } = req.body;
+
+//   const task = await Plan.find({ owner, date });
+
+//   if (!task) next(HttpError(404));
+
+//   res.json(task);
+// };
+
 const getTaskByDate = async (req, res, next) => {
   const { id: owner } = req.user;
-  const { date } = req.body;
+  const { date } = req.params;
 
   const task = await Plan.find({ owner, date });
 
