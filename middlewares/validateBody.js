@@ -4,7 +4,12 @@ const validationBody = (schema) => {
   const validation = (req, res, next) => {
     const { error } = schema.validate(req.body);
     if (error) {
-      next(HttpError(400, error.message));
+      console.log("error: ", error.details[0].message);
+      if (!error.details) {
+        next(HttpError(400, error.message));
+      } else {
+        res.status(400).json({ message: error.details[0].message });
+      }
     }
     next();
   };

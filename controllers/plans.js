@@ -49,6 +49,12 @@ const addTask = async (req, res, next) => {
   const { title, taskText, date, x, y } = req.body;
   const { id } = req.user;
 
+  console.log(req.body.taskText);
+
+  if (req.body.taskText.length > 256) {
+    res.status(400).json({ message: "  The text can be max 256 characters" });
+  }
+
   let task;
 
   if (!x || !y) {
@@ -72,6 +78,10 @@ const updateTask = async (req, res, next) => {
 
   if (!mongoose.isValidObjectId(taskId)) {
     next(HttpError(400, "Invalid task ID format"));
+  }
+
+  if (req.body.taskText.length > 256) {
+    next(HttpError(400, "The text can be max 256 characters"));
   }
 
   let task;
